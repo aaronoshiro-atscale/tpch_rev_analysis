@@ -1,0 +1,7 @@
+unique_name: ORDERS.ORDER_AVERAGE_VALUE
+object_type: metric
+label: ORDER_AVERAGE_VALUE
+description: '{"comment": "Average order value across all orders"}'
+calculation_method: average
+column: O_TOTALPRICE
+dataset: ORDERS

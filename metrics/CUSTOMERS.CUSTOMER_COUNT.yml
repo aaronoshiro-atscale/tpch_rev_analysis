@@ -1,0 +1,7 @@
+unique_name: CUSTOMERS.CUSTOMER_COUNT
+object_type: metric
+label: CUSTOMER_COUNT
+description: '{"comment": "Count of number of customers"}'
+calculation_method: count non-null
+column: C_CUSTKEY
+dataset: CUSTOMERS

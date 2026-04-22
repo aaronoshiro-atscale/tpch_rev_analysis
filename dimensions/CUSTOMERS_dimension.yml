@@ -1,0 +1,31 @@
+unique_name: CUSTOMERS_dimension
+object_type: dimension
+label: CUSTOMERS
+description: '{"comment": "Main table for customer data"}'
+hierarchies:
+  - unique_name: CUSTOMERS_dimension_default_hierarchy
+    label: CUSTOMERS Hierarchy
+    levels:
+      - unique_name: CUSTOMERS_level
+        secondary_attributes:
+          - unique_name: CUSTOMERS.CUSTOMER_NAME
+            label: CUSTOMER_NAME
+            description: '{"synonyms": ["customer name"],"comment": "Name of the customer"}'
+            dataset: CUSTOMERS
+            key_columns:
+              - C_NAME
+            name_column: C_NAME
+level_attributes:
+  - unique_name: CUSTOMERS_level
+    label: CUSTOMERS
+    description: '{"comment": "Main table for customer data"}'
+    custom_empty_member:
+      name: '99999999999999999999999999999999999999'
+      key:
+        - '99999999999999999999999999999999999999'
+    dataset: CUSTOMERS
+    is_hidden: true
+    key_columns:
+      - C_CUSTKEY
+    name_column: C_CUSTKEY
+type: standard

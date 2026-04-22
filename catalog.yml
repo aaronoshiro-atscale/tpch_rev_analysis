@@ -1,0 +1,6 @@
+version: 1
+unique_name: TPCH_REV_ANALYSIS
+object_type: catalog
+label: TPCH_REV_ANALYSIS
+aggressive_agg_promotion: false
+build_speculative_aggs: false

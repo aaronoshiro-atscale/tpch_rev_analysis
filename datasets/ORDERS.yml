@@ -1,0 +1,38 @@
+unique_name: ORDERS
+object_type: dataset
+label: ORDERS
+description: All orders table for the sales domain
+columns:
+  - name: O_ORDERKEY
+    data_type: decimal
+  - name: O_CUSTKEY
+    data_type: decimal
+  - name: O_ORDERSTATUS
+    data_type: string
+  - name: O_TOTALPRICE
+    data_type: decimal
+  - name: O_ORDERDATE
+    data_type: date
+  - name: O_ORDERPRIORITY
+    data_type: string
+  - name: O_CLERK
+    data_type: string
+  - name: O_SHIPPRIORITY
+    data_type: decimal
+  - name: O_COMMENT
+    data_type: string
+  - name: COUNT_LINE_ITEMS
+    data_type: decimal
+  - name: ORDER_YEAR
+    data_type: decimal
+connection_id: con_ATSCALE_SV_TEST_TPCH_SF1
+sql: >-
+  WITH "COUNT_LINE_ITEMS" AS (SELECT COUNT(CONCAT("LINEITEM"."L_ORDERKEY", '-',
+  "LINEITEM"."L_LINENUMBER")) AS "COUNT_LINE_ITEMS",
+  "TPCH_SF1"."ORDERS"."O_ORDERKEY" FROM "TPCH_SF1"."ORDERS" LEFT JOIN
+  "TPCH_SF1"."LINEITEM" ON "TPCH_SF1"."LINEITEM"."L_ORDERKEY" =
+  "TPCH_SF1"."ORDERS"."O_ORDERKEY" GROUP BY "TPCH_SF1"."ORDERS"."O_ORDERKEY")
+  SELECT "TPCH_SF1"."ORDERS".*, "COUNT_LINE_ITEMS"."COUNT_LINE_ITEMS" AS
+  "COUNT_LINE_ITEMS", YEAR("O_ORDERDATE") AS "ORDER_YEAR" FROM
+  "TPCH_SF1"."ORDERS" LEFT JOIN "COUNT_LINE_ITEMS" ON "ORDERS"."O_ORDERKEY" =
+  "COUNT_LINE_ITEMS"."O_ORDERKEY"

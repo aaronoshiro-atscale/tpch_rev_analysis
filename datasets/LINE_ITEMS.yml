@@ -1,0 +1,45 @@
+unique_name: LINE_ITEMS
+object_type: dataset
+label: LINE_ITEMS
+description: Line items in orders
+columns:
+  - name: L_ORDERKEY
+    data_type: decimal
+  - name: L_PARTKEY
+    data_type: decimal
+  - name: L_SUPPKEY
+    data_type: decimal
+  - name: L_LINENUMBER
+    data_type: decimal
+  - name: L_QUANTITY
+    data_type: decimal
+  - name: L_EXTENDEDPRICE
+    data_type: decimal
+  - name: L_DISCOUNT
+    data_type: decimal
+  - name: L_TAX
+    data_type: decimal
+  - name: L_RETURNFLAG
+    data_type: string
+  - name: L_LINESTATUS
+    data_type: string
+  - name: L_SHIPDATE
+    data_type: date
+  - name: L_COMMITDATE
+    data_type: date
+  - name: L_RECEIPTDATE
+    data_type: date
+  - name: L_SHIPINSTRUCT
+    data_type: string
+  - name: L_SHIPMODE
+    data_type: string
+  - name: L_COMMENT
+    data_type: string
+  - name: DISCOUNTED_PRICE
+    data_type: decimal
+    sql: '"L_EXTENDEDPRICE" * (1 - "L_DISCOUNT")'
+  - name: LINE_ITEM_ID
+    data_type: string
+    sql: CONCAT("L_ORDERKEY", '-', "L_LINENUMBER")
+connection_id: con_ATSCALE_SV_TEST_TPCH_SF1
+table: LINEITEM

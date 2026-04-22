@@ -1,0 +1,36 @@
+unique_name: LINE_ITEMS_dimension
+object_type: dimension
+label: LINE_ITEMS_dimension
+description: '{"comment": "Extended price after discount"}'
+hierarchies:
+  - unique_name: LINE_ITEMS_dimension_default_hierarchy
+    label: LINE_ITEMS_dimension Hierarchy
+    levels:
+      - unique_name: LINE_ITEMS_dimension_level
+        secondary_attributes:
+          - unique_name: LINE_ITEMS.DISCOUNTED_PRICE
+            label: DISCOUNTED_PRICE
+            description: '{"comment": "Extended price after discount"}'
+            dataset: LINE_ITEMS
+            key_columns:
+              - L_ORDERKEY
+              - L_LINENUMBER
+            name_column: DISCOUNTED_PRICE
+          - unique_name: LINE_ITEMS.LINE_ITEM_ID
+            label: LINE_ITEM_ID
+            dataset: LINE_ITEMS
+            key_columns:
+              - L_ORDERKEY
+              - L_LINENUMBER
+            name_column: LINE_ITEM_ID
+is_degenerate: true
+level_attributes:
+  - unique_name: LINE_ITEMS_dimension_level
+    label: LINE_ITEMS_dimension
+    description: '{"comment": "Extended price after discount"}'
+    dataset: LINE_ITEMS
+    is_hidden: true
+    key_columns:
+      - L_ORDERKEY
+      - L_LINENUMBER
+    name_column: L_ORDERKEY

@@ -1,0 +1,7 @@
+unique_name: ORDERS.AVERAGE_LINE_ITEMS_PER_ORDER
+object_type: metric
+label: AVERAGE_LINE_ITEMS_PER_ORDER
+description: '{"comment": "Average number of line items per order"}'
+calculation_method: average
+column: COUNT_LINE_ITEMS
+dataset: ORDERS

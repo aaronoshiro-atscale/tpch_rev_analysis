@@ -1,0 +1,45 @@
+unique_name: model_TPCH_REV_ANALYSIS
+object_type: model
+label: TPCH_REV_ANALYSIS
+description: Semantic view for revenue analysis
+dimensions:
+  - LINE_ITEMS_dimension
+metrics:
+  - unique_name: CUSTOMERS.CUSTOMER_COUNT
+  - unique_name: ORDERS.AVERAGE_LINE_ITEMS_PER_ORDER
+  - unique_name: ORDERS.ORDER_AVERAGE_VALUE
+partitions: []
+perspectives: []
+relationships:
+  - unique_name: LINE_ITEM_TO_ORDERS
+    from:
+      dataset: LINE_ITEMS
+      join_columns:
+        - L_ORDERKEY
+    to:
+      dimension: ORDERS_dimension
+      level: ORDERS_level
+  - unique_name: ORDERS_TO_CUSTOMERS
+    from:
+      dataset: ORDERS
+      join_columns:
+        - O_CUSTKEY
+    to:
+      dimension: CUSTOMERS_dimension
+      level: CUSTOMERS_level
+  - unique_name: ORDERS_to_self
+    from:
+      dataset: ORDERS
+      join_columns:
+        - O_ORDERKEY
+    to:
+      dimension: ORDERS_dimension
+      level: ORDERS_level
+  - unique_name: CUSTOMERS_to_self
+    from:
+      dataset: CUSTOMERS
+      join_columns:
+        - C_CUSTKEY
+    to:
+      dimension: CUSTOMERS_dimension
+      level: CUSTOMERS_level

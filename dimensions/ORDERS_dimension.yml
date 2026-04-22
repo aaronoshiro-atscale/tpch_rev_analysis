@@ -1,0 +1,60 @@
+unique_name: ORDERS_dimension
+object_type: dimension
+label: ORDERS
+description: >-
+  {"synonyms": ["sales orders"],"comment": "All orders table for the sales
+  domain"}
+hierarchies:
+  - unique_name: ORDERS_dimension_default_hierarchy
+    label: ORDERS Hierarchy
+    levels:
+      - unique_name: ORDERS_level
+        secondary_attributes:
+          - unique_name: ORDERS.COUNT_LINE_ITEMS
+            label: COUNT_LINE_ITEMS
+            dataset: ORDERS
+            key_columns:
+              - O_ORDERKEY
+            name_column: COUNT_LINE_ITEMS
+          - unique_name: ORDERS.ORDER_DATE
+            label: ORDER_DATE
+            description: '{"comment": "Date when the order was placed"}'
+            dataset: ORDERS
+            key_columns:
+              - O_ORDERDATE
+            name_column: O_ORDERDATE
+          - unique_name: ORDERS.ORDER_YEAR
+            label: ORDER_YEAR
+            description: '{"comment": "Year when the order was placed"}'
+            dataset: ORDERS
+            key_columns:
+              - ORDER_YEAR
+            name_column: ORDER_YEAR
+level_attributes:
+  - unique_name: ORDERS_level
+    label: ORDERS
+    description: >-
+      {"synonyms": ["sales orders"],"comment": "All orders table for the sales
+      domain"}
+    custom_empty_member:
+      name: '99999999999999999999999999999999999999'
+      key:
+        - '99999999999999999999999999999999999999'
+    dataset: ORDERS
+    is_hidden: true
+    key_columns:
+      - O_ORDERKEY
+    name_column: O_ORDERKEY
+relationships:
+  - unique_name: ORDERS_TO_CUSTOMERS
+    from:
+      dataset: ORDERS
+      hierarchy: ORDERS_dimension_default_hierarchy
+      join_columns:
+        - O_CUSTKEY
+      level: ORDERS_level
+    to:
+      dimension: CUSTOMERS_dimension
+      level: CUSTOMERS_level
+    type: embedded
+type: standard
