@@ -2,5 +2,5 @@ unique_name: con_ATSCALE_SV_TEST_TPCH_SF1
 object_type: connection
 label: con_ATSCALE_SV_TEST_TPCH_SF1
 as_connection: con10
-database: ATSCALE_SV_TEST1
+database: ATSCALE_SV_TEST2
 schema: TPCH_SF1
